@@ -1,3 +1,8 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define N 1024
+
+
 void InsereHeapInt(int Vetor[], int pos, int valor, int *comparacoes, int *trocas) {
     Vetor[pos] = valor;
     int i = pos;
