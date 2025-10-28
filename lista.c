@@ -19,7 +19,7 @@ void InsereHeap(paciente Vetor[], int N) {
 }
 
 void Heapfy(paciente Vetor[], int N) {
-  for (int i = 1; i < N; i++)
+  for (int i = 2; i <= N; i++)
     InsereHeap(Vetor, i);
 }
 
@@ -57,14 +57,14 @@ void HeapSort(paciente Vetor[], int N) {
 }
 
 void InicHeap(paciente Vetor[], int N) {
-  for (int i = 0; i < N; i++) {
+  for (int i = 1; i <= N; i++) {
     strcpy(Vetor[i].nome, "NULL");
     Vetor[i].prioridade = 0;
   }
 }
 
 void AlteraHeap(paciente Vetor[], int N, int indice_paciente, int nova_prioridade) {
-  if (indice_paciente >= N) {
+  if (indice_paciente > N || indice_paciente < 1) {
     puts("O índice que você digitou não está correto");
     return;
   }
@@ -88,12 +88,12 @@ void AlteraHeap(paciente Vetor[], int N, int indice_paciente, int nova_prioridad
 }
 
 void RemoveHeap(paciente Vetor[], int N) {
-  for (int i = 0; i < N - 1; i++) {
+  for (int i = 1; i < N; i++) {
     strcpy(Vetor[i].nome, Vetor[i + 1].nome);
     Vetor[i].prioridade = Vetor[i + 1].prioridade;
   }
-  strcpy(Vetor[N - 1].nome, "NULL");
-  Vetor[N - 1].prioridade = 0;
+  strcpy(Vetor[N].nome, "NULL");
+  Vetor[N].prioridade = 0;
   N--;
 
   if (!ChecaHeap(Vetor, N)) {
@@ -105,7 +105,7 @@ void RemoveHeap(paciente Vetor[], int N) {
 }
 
 void ImprimeHeap(paciente Vetor[], int N) {
-  for (int i = 0; i < N; i++) {
+  for (int i = 1; i <= N; i++) {
     printf("Pessoa #%d:\n", i);
     printf(" Nome: %s\n", Vetor[i].nome);
     printf(" Prioridade: %d\n", Vetor[i].prioridade);
