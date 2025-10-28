@@ -70,7 +70,7 @@ void HeapSort(int Vetor[])
 
 void InicHeap
 void Alteraheap
-void 
+void RemoveHeap
 
 
 
