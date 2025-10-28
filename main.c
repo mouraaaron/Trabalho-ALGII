@@ -78,17 +78,29 @@ int main () {
                 break;
             case 5:
 			{
-				int vetor_comparacao[TAMANHO_VETOR];
-				
+				int vetor_original[TAMANHO_VETOR];
+				int vetor_quick[TAMANHO_VETOR];
+				int vetor_selection[TAMANHO_VETOR];
+				int vetor_heap[TAMANHO_VETOR];
+
+				// Criaçao do vetor orignial com os 1024 elementos
 				for (int i=0; i<TAMANHO_VETOR; i++)
 					vetor_comparacao[i] = rand() % LIMITE_MAXIMO;
 
-				for (int i = 0; i < TAMANHO_COMPARACAO; i++) {
+				// Copia para os outros vetores do vetor original
+				for (int i = 0; i < TAMANHO_COMPARACAO; i++) 
+				{
         			vetor_quick[i] = vetor_original[i]; 
         			vetor_selection[i] = vetor_original[i];
-				etor_heap[i] = vetor_original[i];
-    }
+					vetor_heap[i] = vetor_original[i];
+    			}
 				puts("Vetor de 1024 números aleatórios foi criado");
+
+				selection_sort(int vetor_selection[], TAMANHO_COMPARACAO, &comparacoesSelection, &trocasSelection);
+				quick_sort(int vetor_quick[], TAMANHO_COMPARACAO, &comparacoesQuick, &trocasQuick);
+				heap_sort(int vetor_heap[], TAMANHO_COMPARACAO, &comparacoesQuick, &trocasQuick);
+
+				puts("O número de comparacoes feitas no 
 			}	
 
 				
