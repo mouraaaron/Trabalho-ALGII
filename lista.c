@@ -13,21 +13,21 @@ typedef struct {
 void InsereHeap(paciente Vetor[], int N)
 {
   int aux;
-  int i = N + 1;
-  while (i>1 && vetor[i/2]<vetor[i])
-  {  
+  int i = N + 1;  
+  paciente aux;
+  while (i > 1 && vetor[i/2].prioridade < vetor[i].prioridade) {
     aux = vetor[i/2];
     vetor[i/2] = vetor[i];
     vetor[i] = aux;
-    i = i/2;
+    i = i / 2;
+    }
   }
-}
 
 void Heapfy(paciente Vetor[], int N)
 {
   int i;
   for (i=1; i<N; i++)
-    InsereHeap(i, Vetor);
+    InsereHeap(Vetor, i);
 }
 
 int checaHeap(paciente Vetor[], int N)
@@ -43,9 +43,9 @@ void SacodeHeap (paciente Vetor[], int N)
 {
   int aux;
   int i = 2;
-  while (i <= tam)
+  while (i <= N)
   {
-    if (i<tam && Vetor[i]<Vetor[i+1])
+    if (i<N && Vetor[i]<Vetor[i+1])
       i++;
     if (Vetor[i/2] >= Vetor[i])
       break;
