@@ -2,7 +2,13 @@
 #include <stdlib.h>
 #include "lista.h"
 
+int main () {
 
+	puts("-------- Menu de opções --------");
+	puts(" Digite o número da operação desejada:")
+	puts(" 1 - Iniciar o Heap
+}
+    
 /* Funcionalidades da enfermeira
 * cadastrar pacientes (insereheap)
 * chamar o prox paciente (removeheap) 
