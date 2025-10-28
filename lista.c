@@ -7,15 +7,16 @@ typedef struct {
   int prioridade;
 } paciente;
 
-void InsereHeap(paciente Vetor[], int N) {
-  int i = N;
-  paciente temp;
-  while (i > 1 && Vetor[i/2].prioridade < Vetor[i].prioridade) {
-    temp = Vetor[i/2];
-    Vetor[i/2] = Vetor[i];
-    Vetor[i] = temp;
-    i = i / 2;
-  }
+void InsereHeap(paciente Vetor[], int pos, paciente novo) {
+    Vetor[pos] = novo;  
+    int i = pos;
+    paciente temp;
+    while (i > 1 && Vetor[i/2].prioridade < Vetor[i].prioridade) {
+        temp = Vetor[i/2];
+        Vetor[i/2] = Vetor[i];
+        Vetor[i] = temp;
+        i = i / 2;
+    }
 }
 
 void Heapfy(paciente Vetor[], int N) {
