@@ -4,7 +4,7 @@
 
 #define MAXPACIENTES 10
 #define TAMANHO_VETOR 1024
-#define LIMITE_MAXIMO
+#define LIMITE_MAXIMO 1000
 struct paciente leNovoPaciente ()
 {
 	struct paciente novoPaciente;
