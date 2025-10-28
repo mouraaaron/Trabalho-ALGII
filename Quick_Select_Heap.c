@@ -3,7 +3,10 @@
 #define N 1024
 
 
-void InsereHeapInt(int Vetor[], int pos, int valor, int *comparacoes, int *trocas) {
+/* Para comparar as trocas e comparações entre os 3 modelos de ordenação, tivemos que criar novamente as funções 
+* do HEAP só que agora para inteiros, e não structs, pois o vetor é de 1024 inteiros aleatórios.
+*/
+void InsereHeapint(int Vetor[], int pos, int valor, int *comparacoes, int *trocas) {
     Vetor[pos] = valor;
     int i = pos;
     int temp;
@@ -18,12 +21,12 @@ void InsereHeapInt(int Vetor[], int pos, int valor, int *comparacoes, int *troca
     if (i > 1) (*comparacoes)++; // última comparação que quebrou o while
 }
 
-void HeapfyInt(int Vetor[], int N, int *comparacoes, int *trocas) {
+void Heapfyint(int Vetor[], int N, int *comparacoes, int *trocas) {
     for (int i = 2; i <= N; i++)
-        InsereHeapInt(Vetor, i, Vetor[i], comparacoes, trocas);
+        InsereHeapint(Vetor, i, Vetor[i], comparacoes, trocas);
 }
 
-void SacodeHeapInt(int Vetor[], int N, int *comparacoes, int *trocas) {
+void SacodeHeapint(int Vetor[], int N, int *comparacoes, int *trocas) {
     int i = 2;
     int temp;
     while (i <= N) {
@@ -43,21 +46,35 @@ void SacodeHeapInt(int Vetor[], int N, int *comparacoes, int *trocas) {
     }
 }
 
-void HeapSortInt(int Vetor[], int N, int *comparacoes, int *trocas) {
+void HeapSortint(int Vetor[], int N, int *comparacoes, int *trocas) {
     int temp;
-    HeapfyInt(Vetor, N, comparacoes, trocas);
+    Heapfyint(Vetor, N, comparacoes, trocas);
     for (int i = N; i > 1; i--) {
         temp = Vetor[1];
         Vetor[1] = Vetor[i];
         Vetor[i] = temp;
         (*trocas)++;
-        SacodeHeapInt(Vetor, i-1, comparacoes, trocas);
+        SacodeHeapint(Vetor, i-1, comparacoes, trocas);
     }
 }
 
-int ChecaHeapInt(int Vetor[], int N) {
+int ChecaHeapint(int Vetor[], int N) {
     for (int i = N; i > 1; i--)
         if (Vetor[i] > Vetor[i/2])
             return 0;
     return 1;
+}
+
+void quicksort(int Vetor[], int esq, int dir){
+    int pos_pivo;
+    if(esq<dir){
+        particao(Vetor, esq, dir, *pos_pivo);
+        quicksort(Vetor, esq, pos_pivo
+    }
+}
+
+void particao(int vetor[]; int esq, int dir, int *pos_pivo){
+    int i,j,pivo,aux;
+    pivo 
+}
 }
