@@ -4,11 +4,12 @@
 
 struct paciente;
 
-void InicHeap(int n, int vetor[]);
-void InsereHeap(int n, int vetor[]);
-int ChecaHeap(int vetor[]);
-void RemoveHeap(int n, int vetor[]);
-void Heapfy(int vetor[])
-void ImprimeHeap(int vetor[]);
-void HeapSort(int vetor[]); 
-void AlteraHeap(int vetor[]);
+void InicHeap
+void InsereHeap
+int ChecaHeap
+void RemoveHeap
+void Heapfy
+void ImprimeHeap
+void HeapSort
+void AlteraHeap
+void SacodeHeap(paciente Vetor[], int N);
