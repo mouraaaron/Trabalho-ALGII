@@ -22,7 +22,7 @@ void InsereHeap(int tam, int vetor[])
   }
 }
 
-void Heapfy(int Vetor[])
+void Heapfy(int Vetor[], int N)
 {
   int i;
   for (i=1; i<N; i++)
@@ -82,14 +82,16 @@ void AlteraHeap(struct paciente vetor[], int n , int indice_paciente, int nova_p
   }
   
   int prioridade_antiga = vetor[indice_paciente].prioridade;
-  vetor[indice_paciente].prioridade == nova_prioridade;
+  vetor[indice_paciente].prioridade = nova_prioridade;
 
   printf("A prioridade do paciente %s foi alterada para %d\n", vetor[indice_paciente].nome, nova_prioridade);
 
-  if(!ChecaHeap(vetor,n)){
-    Heapfy(vetor, n);
+  if(!ChecaHeap(vetor)){
+    Heapfy(vetor, N);
     printf("O Heap foi alterado\n");
   }
+  else 
+    printf("Mesmo com a alteração da prioridade, a ordem do Heap permanece a mesma.\n");
   
   }
 void RemoveHeap
