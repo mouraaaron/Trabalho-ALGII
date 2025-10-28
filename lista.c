@@ -73,9 +73,7 @@ void InicHeap(paciente vetor[], int N){
   for(int i = 0; i < N; i++){
     strcpy(vetor[i].nome, "NULL");
     vetor[i].prioridade = 0;
-    
   }
-  
 }
 
 
@@ -86,18 +84,18 @@ void AlteraHeap(paciente Vetor[], int N , int indice_paciente, int nova_priorida
     return;
    }
   
-  if(vetor[indice_paciente].prioridade == 0){ //nesse caso, o paciente desse índice não foi inicializado ainda
+  if(Vetor[indice_paciente].prioridade == 0){ //nesse caso, o paciente desse índice não foi inicializado ainda
     puts("Não há paciente inicializado na posição que você está tentando acessar");
     return;
   }
   
-  int prioridade_antiga = vetor[indice_paciente].prioridade;
-  vetor[indice_paciente].prioridade = nova_prioridade;
+  int prioridade_antiga = Vetor[indice_paciente].prioridade;
+  Vetor[indice_paciente].prioridade = nova_prioridade;
 
   printf("A prioridade do paciente %s foi alterada para %d\n", vetor[indice_paciente].nome, nova_prioridade);
 
-  if(!ChecaHeap(vetor)){
-    Heapfy(vetor, N);
+  if(!ChecaHeap(Vetor, N)){
+    Heapsort(Vetor, N);
     printf("O Heap foi alterado\n");
   }
   else 
@@ -105,12 +103,22 @@ void AlteraHeap(paciente Vetor[], int N , int indice_paciente, int nova_priorida
   
   }
 
-void RemoveHeap(paciente Vetor[], int N, )
-
-
-
-
-
+void RemoveHeap(paciente Vetor[], int N){
+  for(int i = 0; i < N - 1; i++){
+    strcpy(Vetor[i].nome, Vetor[i + 1].nome);
+    Vetor[i].prioridade = Vetor[i + 1].prioridade;
+    }
+  strcpy(Vetor[N-1].nome, "NULL");
+  vetor[N-1].prioridade = 0;
+  N--;
+  
+  if(!ChecaHeap(Vetor, N)){
+    Heapsort(Vetor, N);
+    printf("O Heap foi alterado\n");
+  }
+  else 
+    printf("Mesmo com a alteração da prioridade, a ordem do Heap permanece a mesma.\n");
+}
 
 
 
