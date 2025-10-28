@@ -73,21 +73,24 @@ void InicHeap
 void AlteraHeap(struct paciente vetor[], int n , int indice_paciente, int nova_prioridade){
   if(indice_paciente >= n){
     puts("O índice que você digitou não está correto");
-    break;
+    return;
    }
   
   if(vetor[indice_paciente].prioridade == 0){ //nesse caso, o paciente desse índice não foi inicializado ainda
     puts("Não há paciente inicializado na posição que você está tentando acessar");
-    break;
+    return;
   }
+  
   int prioridade_antiga = vetor[indice_paciente].prioridade;
   vetor[indice_paciente].prioridade == nova_prioridade;
 
-  printf("A prioridade do paciente %s foi alterada para %d\n", , nova_prioridade);
+  printf("A prioridade do paciente %s foi alterada para %d\n", vetor[indice_paciente].nome, nova_prioridade);
 
-  if(!ChecaHeap(vetor,n))
+  if(!ChecaHeap(vetor,n)){
     Heapfy(vetor, n);
-  printf("O Heap foi alterado")
+    printf("O Heap foi alterado\n");
+  }
+  
   }
 void RemoveHeap
 
