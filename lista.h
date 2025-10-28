@@ -4,9 +4,6 @@
 
 struct paciente;
 
-
-struct fila InicHeap(fila);
-
 void InicHeap(int n, int vetor[]);
 void InsereHeap(int n, int vetor[]);
 int ChecaHeap(int vetor[]);
