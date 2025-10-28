@@ -2,17 +2,16 @@
 #define lista
 #include <stdio.h>
 
-struct fila; //definir o TAD fila 
 struct paciente;
 
 
 struct fila InicHeap(fila);
 
-InicHeap
-void InsereHeap(int n int vetor[]);
+void InicHeap(int n, int vetor[]);
+void InsereHeap(int n, int vetor[]);
 int ChecaHeap(int vetor[]);
-RemoveHeap
+void RemoveHeap(int n, int vetor[]);
 void Heapfy(int vetor[])
-ImprimeHeap
+ImprimeHeap(int vetor[]);
 void HeapSort(int vetor[]); 
-AlteraHeap
+void AlteraHeap(int vetor[]);
