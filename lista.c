@@ -120,6 +120,14 @@ void RemoveHeap(paciente Vetor[], int N){
     printf("Mesmo com a alteração da prioridade, a ordem do Heap permanece a mesma.\n");
 }
 
+void ImprimeHeap(paciente Vetor[], int N){
+  for(int i = 0; i < N; i++){
+    printf("Pessoa #%d:\n", i);
+    printf(" Nome: %s\n", Vetor[i].nome);
+    printf(" Prioridade: %d\n", Vetor[i].prioridade);
+    printf("\n");
+  }
+}
 
 
 
