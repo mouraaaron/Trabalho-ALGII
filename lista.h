@@ -5,7 +5,7 @@
 struct paciente;
 
 void InicHeap(paciente vetor[], int N);
-void InsereHeap(paciente vetor[], int N);
+void InsereHeap(paciente Vetor[], int pos, paciente novo);
 int ChecaHeap(paciente vetor[], int N);
 void RemoveHeap(paciente Vetor[], int N);
 void Heapfy(paciente vetor[], int N);
