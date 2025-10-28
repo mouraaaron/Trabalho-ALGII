@@ -9,6 +9,6 @@ void InsereHeap(int n, int vetor[]);
 int ChecaHeap(int vetor[]);
 void RemoveHeap(int n, int vetor[]);
 void Heapfy(int vetor[])
-ImprimeHeap(int vetor[]);
+void ImprimeHeap(int vetor[]);
 void HeapSort(int vetor[]); 
 void AlteraHeap(int vetor[]);
