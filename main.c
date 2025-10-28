@@ -57,7 +57,7 @@ int main () {
                     contaPacientes++;
                 } 
 				else 
-                    printf("ERRO: A fila de pacientes está cheia");
+                    printf("A fila de pacientes está cheia, digite outro comando.");
                 break;
             case 2:
                 // Checa se existe paciente para ser removido
@@ -67,7 +67,7 @@ int main () {
                     contaPacientes--;
                 } 
 				else 
-                    printf("ERRO: Não há pacientes na fila de espera.\n");
+                    printf("Não há pacientes na fila de espera, digite outro comando.\n");
                 break;
             case 3:
                 puts("Lista de Espera:");
@@ -75,6 +75,7 @@ int main () {
                 break;
             case 4:
                 HeapSort(FilaPacientes, contaPacientes);
+				puts("Organização dos pacientes realizada");
                 break;
             case 5:
 			{
@@ -83,12 +84,17 @@ int main () {
 				int vetor_selection[TAMANHO_VETOR];
 				int vetor_heap[TAMANHO_VETOR];
 
+				int comparacoesSelection = 0, trocasSelection = 0;
+				int comparacoesHeap = 0, trocasHeap = 0;
+				int comparacoesQuick = 0, trocasQuick = 0;
+
+				
 				// Criaçao do vetor orignial com os 1024 elementos
 				for (int i=0; i<TAMANHO_VETOR; i++)
-					vetor_comparacao[i] = rand() % LIMITE_MAXIMO;
+					vetor_original[i] = rand() % LIMITE_MAXIMO;
 
 				// Copia para os outros vetores do vetor original
-				for (int i = 0; i < TAMANHO_COMPARACAO; i++) 
+				for (int i = 0; i < TAMANHO_VETOR; i++) 
 				{
         			vetor_quick[i] = vetor_original[i]; 
         			vetor_selection[i] = vetor_original[i];
@@ -96,14 +102,22 @@ int main () {
     			}
 				puts("Vetor de 1024 números aleatórios foi criado");
 
-				selection_sort(int vetor_selection[], TAMANHO_COMPARACAO, &comparacoesSelection, &trocasSelection);
-				quick_sort(int vetor_quick[], TAMANHO_COMPARACAO, &comparacoesQuick, &trocasQuick);
-				heap_sort(int vetor_heap[], TAMANHO_COMPARACAO, &comparacoesQuick, &trocasQuick);
+				selection_sort(vetor_selection, TAMANHO_VETOR, &comparacoesSelection, &trocasSelection);
+				quick_sort(vetor_quick, TAMANHO_VETOR, &comparacoesQuick, &trocasQuick);
+				heap_sort(vetor_heap, TAMANHO_VETOR, &comparacoesHeap, &trocasHeap);
 
-				puts("O número de comparacoes feitas no 
+				puts("Selection Sort");
+				printf("Número de comparacoes: %d\n", comparacoesSelection);
+				printf("Número de trocas: %d\n\n", trocasSelection);
+
+				puts("Heap Sort");
+				printf("Número de comparacoes: %d\n", comparacoesHeap);
+				printf("Número de trocas: %d\n\n", trocasHeap);
+
+				puts("Quick Sort");
+				printf("Número de comparacoes: %d\n", comparacoesQuick);
+				printf("Número de trocas: %d\n\n", trocasQuick);
 			}	
-
-				
                 break;
             case 0:
                 break;
