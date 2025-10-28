@@ -1,18 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
+#inclue <string.h>
 #include "lista.h"
 
 typedef struct {
   char nome[50];
-  int idade;
+  int prioridade;
 }paciente;
 
 
 
-void InsereHeap(int tam, int vetor[])
+void InsereHeap(paciente Vetor[], int N)
 {
   int aux;
-  int i = tam + 1;
+  int i = N + 1;
   while (i>1 && vetor[i/2]<vetor[i])
   {  
     aux = vetor[i/2];
@@ -22,23 +23,23 @@ void InsereHeap(int tam, int vetor[])
   }
 }
 
-void Heapfy(int Vetor[], int N)
+void Heapfy(paciente Vetor[], int N)
 {
   int i;
   for (i=1; i<N; i++)
-    InsereHeap(i, vetor);
+    InsereHeap(i, Vetor);
 }
 
-int checaHeap(int Vetor[])
+int checaHeap(paciente Vetor[], int N)
 {
   int i = N;
   for (i=N; i>1; i--)
-    if (Vetor[i] > Vetor[i/2])
+    if (Vetor[i].prioridade > Vetor[i/2].prioridade)
       return 0;
   return 1;
 }
 
-void SacodeHeap (int tam, int vetor[])
+void SacodeHeap (paciente Vetor[], int N)
 {
   int aux;
   int i = 2;
@@ -55,7 +56,7 @@ void SacodeHeap (int tam, int vetor[])
   }
 }
 
-void HeapSort(int Vetor[])
+void HeapSort(paciente Vetor[], int N)
 {
   int i, aux;
   Heapfy(vetor);
@@ -68,10 +69,19 @@ void HeapSort(int Vetor[])
   }
 }
 
-void InicHeap
+void InicHeap(paciente vetor[], int N){
+  for(int i = 0; i < N; i++){
+    strcpy(vetor[i].nome, "NULL");
+    vetor[i].prioridade = 0;
+    
+  }
+  
+}
+
+
 // a função alteraheap recebe o vetor, o paciente que vai ter prioridade alterada e a nova prioridade
-void AlteraHeap(struct paciente vetor[], int n , int indice_paciente, int nova_prioridade){
-  if(indice_paciente >= n){
+void AlteraHeap(paciente Vetor[], int N , int indice_paciente, int nova_prioridade){
+  if(indice_paciente >= N){
     puts("O índice que você digitou não está correto");
     return;
    }
@@ -94,7 +104,8 @@ void AlteraHeap(struct paciente vetor[], int n , int indice_paciente, int nova_p
     printf("Mesmo com a alteração da prioridade, a ordem do Heap permanece a mesma.\n");
   
   }
-void RemoveHeap
+
+void RemoveHeap(paciente Vetor[], int N, )
 
 
 
