@@ -1,3 +1,13 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "lista.h"
+
+typedef struct {
+  char nome[50];
+  int idade;
+}paciente;
+
+
 
 void InsereHeap(int tam, int vetor[])
 {
@@ -58,7 +68,7 @@ void HeapSort(int Vetor[])
   }
 }
 
-
+void 
 
 
 
