@@ -1,5 +1,4 @@
-#ifndef lista
-#define lista
+
 #include <stdio.h>
 #ifndef LISTA_H
 #define LISTA_H
