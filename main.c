@@ -34,7 +34,7 @@ int main () {
 	
     // Cria um looping que continua ate o botao de saida ser pressionado
     do {
-        puts("\n-------------- Menu de opcoes ---------------"); // Adicionado '\n' para espaçamento
+        puts("\-------------- Menu de opcoes ---------------");
         puts(" 1 - Adicionar Paciente");
         puts(" 2 - Chamar Proximo Paciente");
         puts(" 3 - Imprimir Lista de Espera");
