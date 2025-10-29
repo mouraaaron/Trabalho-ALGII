@@ -34,14 +34,14 @@ int main () {
 	
     // Cria um looping que continua ate o botao de saida ser pressionado
     do {
-        puts("--------------------- Menu de opcoes ---------------------");
-        puts("|    1 - Adicionar Paciente                              |");
-        puts("|    2 - Chamar Proximo Paciente                         |");
-        puts("|    3 - Imprimir Lista de Espera                        |");
-        puts("|    4 - Ordenar Pacientes pela Prioridade               |" );
-        puts("|    5 - Comparacao entre Heap, Quick e Selection Sort   |");
-        puts("|    0 - Sair"                                           | );
-        puts("---------------------------------------------------------");
+        puts("--------------------- Menu de opcoes -------------------");
+        puts("|  1 - Adicionar Paciente                              |");
+        puts("|  2 - Chamar Proximo Paciente                         |");
+        puts("|  3 - Imprimir Lista de Espera                        |");
+        puts("|  4 - Ordenar Pacientes pela Prioridade               |" );
+        puts("|  5 - Comparacao entre Heap, Quick e Selection Sort   |");
+        puts("|  0 - Sair"                                           | );
+        puts("-------------------------------------------------------");
         printf(" Digite o numero da operacao desejada: ");
         
         scanf("%d", &escolha);
