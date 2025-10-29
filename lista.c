@@ -1,11 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "lista.h"
 
-typedef struct {
-  char nome[50];
-  int prioridade;
-} paciente;
 
 void InsereHeap(paciente Vetor[], int pos, paciente novo) {
     Vetor[pos] = novo;  
