@@ -1,16 +1,18 @@
+#include "lista.h" 
+#include "Sort.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "lista.h" 
-
+#include <string.h>
 #define MAXPACIENTES 10
 #define TAMANHO_VETOR 1024
 #define LIMITE_MAXIMO 1000
+
 struct paciente leNovoPaciente ()
 {
 	struct paciente novoPaciente;
         
     printf("Digite o nome do paciente: ");
-    scanf("%s", novoPaciente.nome);
+    scanf("%49s", novoPaciente.nome);
 
     printf("Digite a prioridade do paciente: ");
 	scanf("%d", &novoPaciente.prioridade);
@@ -27,7 +29,7 @@ int main () {
     struct paciente FilaPacientes [MAXPACIENTES];
 
     // Inicializa a fila de pacientes
-    inciaHeap(FilaPacientes);
+    InicHeap(FilaPacientes, MAXPACIENTES);
 
 	// Inicializa srand em 0 para padronizaçao dos resultados
 	srand(0);
@@ -40,7 +42,7 @@ int main () {
         puts("|  3 - Imprimir Lista de Espera                        |");
         puts("|  4 - Ordenar Pacientes pela Prioridade               |" );
         puts("|  5 - Comparacao entre Heap, Quick e Selection Sort   |");
-        puts("|  0 - Sair"                                           | );
+        puts("|  0 - Sair                                            |");
         puts("-------------------------------------------------------");
         printf(" Digite o numero da operacao desejada: ");
         
@@ -53,8 +55,8 @@ int main () {
                 if (contaPacientes < MAXPACIENTES)
                 {
                     struct paciente novoPaciente = leNovoPaciente();
-                    InsereHeap(FilaPacientes, contaPacientes, novoPaciente); 
                     contaPacientes++;
+                    InsereHeap(FilaPacientes, contaPacientes, novoPaciente); 
                 } 
 				else 
                     printf("A fila de pacientes está cheia, digite outro comando.");
@@ -102,9 +104,9 @@ int main () {
     			}
 				puts("Vetor de 1024 números aleatórios foi criado");
 
-				selection_sort(vetor_selection, TAMANHO_VETOR, &comparacoesSelection, &trocasSelection);
-				quick_sort(vetor_quick, TAMANHO_VETOR, &comparacoesQuick, &trocasQuick);
-				heap_sort(vetor_heap, TAMANHO_VETOR, &comparacoesHeap, &trocasHeap);
+				SelectionSort(vetor_selection, TAMANHO_VETOR, &comparacoesSelection, &trocasSelection);
+				quicksort(vetor_quick, 0, TAMANHO_VETOR, &comparacoesQuick, &trocasQuick);
+				HeapSortint(vetor_heap, TAMANHO_VETOR, &comparacoesHeap, &trocasHeap);
 
 				puts("Selection Sort");
 				printf("Número de comparacoes: %d\n", comparacoesSelection);
@@ -128,7 +130,5 @@ int main () {
     } while (escolha != 0);
 
     return 0;
-}                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-                                                                                                                                                                                                                            42,45-66     Tudo
-
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
     
