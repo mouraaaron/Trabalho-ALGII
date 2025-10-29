@@ -21,7 +21,7 @@ void InsereHeap(paciente Vetor[], int pos, paciente novo) {
 
 void Heapfy(paciente Vetor[], int N) {
   for (int i = 2; i <= N; i++)
-    InsereHeap(Vetor, i);
+    InsereHeap(Vetor, i, Vetor[i]);
 }
 
 int ChecaHeap(paciente Vetor[], int N) {
