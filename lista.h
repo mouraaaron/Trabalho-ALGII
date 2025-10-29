@@ -1,8 +1,13 @@
 #ifndef lista
 #define lista
 #include <stdio.h>
+#ifndef LISTA_H
+#define LISTA_H
 
-struct paciente;
+typedef struct {
+  char nome[50];
+  int prioridade;
+} paciente;
 
 void InicHeap(paciente vetor[], int N);
 void InsereHeap(paciente Vetor[], int pos, paciente novo);
@@ -13,3 +18,5 @@ void ImprimeHeap(paciente Vetor[], int N);
 void HeapSort(paciente vetor[], int N);
 void AlteraHeap(paciente Vetor[], int N , int indice_paciente, int nova_prioridade);
 void SacodeHeap(paciente Vetor[], int N);
+
+#endif
