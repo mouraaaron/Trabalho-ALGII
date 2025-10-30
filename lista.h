@@ -22,19 +22,19 @@ int ChecaHeap(paciente vetor[], int N);
    reestrutura a fila para manter a propriedade de Heap. */
 void RemoveHeap(paciente Vetor[], int N);
 
-/* Reestrutura o Heap garantindo que a propriedade de Heap seja mantida. */
+/* Reestrutura a fila, garantindo que a propriedade de Heap seja mantida. */
 void Heapfy(paciente vetor[], int N);
 
-/* Imprime todos os pacientes armazenados no Heap. */
+/* Imprime todos os pacientes presentes na fila. */
 void ImprimeHeap(paciente Vetor[], int N);
 
-/* Ordena o vetor de pacientes utilizando o algoritmo Heap Sort. */
+/* Ordena a fila de pacientes utilizando o algoritmo Heap Sort. */
 void HeapSort(paciente vetor[], int N);
 
 /* Altera a prioridade de um paciente no índice fornecido para o novo valor */
 void AlteraHeap(paciente Vetor[], int N , int indice_paciente, int nova_prioridade);
 
-/* Função que reestrutura um elemento do Heap para garantir a validade da propriedade. */
+/* Função auxiliar que reestrutura um elemento do Heap para garantir a validade da propriedade. */
 void SacodeHeap(paciente Vetor[], int N);
 
 
