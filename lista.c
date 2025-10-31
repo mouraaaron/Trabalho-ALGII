@@ -74,15 +74,8 @@ void AlteraHeap(paciente Vetor[], int N, int indice_paciente, int nova_prioridad
 
   Vetor[indice_paciente].prioridade = nova_prioridade;
 
-  printf("A prioridade do paciente %s foi alterada para %d\n",
-         Vetor[indice_paciente].nome, nova_prioridade);
+  printf("A prioridade do paciente %s foi alterada para %d\n", Vetor[indice_paciente].nome, nova_prioridade);
 
-  if (!ChecaHeap(Vetor, N)) {
-    HeapSort(Vetor, N);
-    printf("O Heap foi alterado\n");
-  } else {
-    printf("Mesmo com a alteração da prioridade, a ordem do Heap permanece a mesma.\n");
-  }
 }
 
 void RemoveHeap(paciente Vetor[], int N) {
