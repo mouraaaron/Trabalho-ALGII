@@ -41,7 +41,8 @@ int main () {
         puts("|  2 - Chamar Proximo Paciente                         |");
         puts("|  3 - Imprimir Lista de Espera                        |");
         puts("|  4 - Ordenar Pacientes pela Prioridade               |" );
-        puts("|  5 - Comparacao entre Heap, Quick e Selection Sort   |");
+        puts("|  5 - Alterar Prioridade do Paciente                  |" );
+        puts("|  6 - Comparacao entre Heap, Quick e Selection Sort   |");
         puts("|  0 - Sair                                            |");
         puts("-------------------------------------------------------");
         printf(" Digite o numero da operacao desejada: ");
@@ -57,10 +58,13 @@ int main () {
                     struct paciente novoPaciente = leNovoPaciente();
                     contaPacientes++;
                     InsereHeap(FilaPacientes, contaPacientes, novoPaciente); 
+                    HeapSort(FilaPacientes, contaPacientes);
+                    break;
                 } 
-				else 
-                    printf("A fila de pacientes está cheia, digite outro comando.");
-                break;
+				else{
+                    printf("A fila de pacientes está cheia, digite outro comando.\n");
+                    break;
+                }
             case 2:
                 // Checa se existe paciente para ser removido
                 if (contaPacientes > 0)
@@ -80,6 +84,23 @@ int main () {
 				puts("Organização dos pacientes realizada");
                 break;
             case 5:
+                if(contaPacientes > 0)
+                {
+                    int indice_paciente, nova_prioridade;
+                    printf("Digite o íncide do paciente que você deseja alterar a prioridade: ");
+                    scanf("%d", &indice_paciente);
+                    printf("Digite a nova propriedade que você deseja da-lo: ");
+                    scanf("%d", &nova_prioridade);
+                    AlteraHeap(FilaPacientes, contaPacientes, indice_paciente, nova_prioridade);
+                    puts("Alteração de prioridade feita!");
+                    break;
+                }
+                else
+                {    
+                    printf("Não há pacientes na fila de espera, digite outro comando.\n");
+                    break;
+                }
+            case 6:
 			{
 				int vetor_original[TAMANHO_VETOR];
 				int vetor_quick[TAMANHO_VETOR];
