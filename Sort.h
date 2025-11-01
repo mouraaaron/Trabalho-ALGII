@@ -2,20 +2,23 @@
 #ifndef SORT_H
 #define SORT_H
 
-/* Constrói uma estrutura de Heap a partir do Vetor
-   desordenado de tamanho 'N', atualizando as contagens de comparacoes e trocas. */
+/* Insere o 'valor' na posição 'pos' do Vetor
+   e o "peneira" para cima para garantir a propriedade
+   de Heap, atualizando as contagens de comparacoes e trocas. */
 void InsereHeapint(int Vetor[], int pos, int valor, int *comparacoes, int *trocas);
 
-/* Constrói uma estrutura de Heap a partir do Vetor
-   desordenado de tamanho 'N', atualizando as contagens de comparacoes e trocas. */
+/* Constrói um Heap de Máximo a partir do Vetor de tamanho 'N'
+   através da inserção sequencial de todos os elementos,
+   atualizando as contagens de comparacoes e trocas. */
 void Heapfyint(int Vetor[], int N, int *comparacoes, int *trocas);
 
-/* Restaura a propriedade de Heap no subvetor de tamanho 'N',
-  peneirando o elemento para baixo e atualizando as contagens de comparacoes e trocas. */
+/* Restaura a propriedade do Heap de Máximo no subvetor de tamanho 'N'
+   através da operação "peneirar para baixo"), tipicamente
+   após a remoção da raiz. Atualiza as contagens de comparacoes e trocas. */
 void SacodeHeapint(int Vetor[], int N, int *comparacoes, int *trocas);
 
-/* Ordena o Vetor de tamanho 'N' utilizando o algoritmo Heap Sort,
-   atualizando as contagens de comparacoes e trocas. */
+/* Ordena o Vetor de tamanho 'N' utilizando o algoritmo Heap Sort.
+Atualiza as contagens de comparacoes e trocas. */
 void HeapSortint(int Vetor[], int N, int *comparacoes, int *trocas);
 
 /* Verifica se o Vetor de tamanho 'N' é uma estrutura de Heap válida,
