@@ -3,9 +3,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define MAXPACIENTES 10
+#include <time.h>
+#define MAXPACIENTES 4
 #define TAMANHO_VETOR 1024
-#define LIMITE_MAXIMO 1000
+#define LIMITE_MAXIMO 1025
 
 struct paciente leNovoPaciente ()
 {
@@ -31,8 +32,7 @@ int main () {
     // Inicializa a fila de pacientes
     InicHeap(FilaPacientes, MAXPACIENTES);
 
-	// Inicializa srand em 0 para padronizaçao dos resultados
-	srand(0);
+    srand(time(NULL)); 	
 	
     // Cria um looping que continua ate o botao de saida ser pressionado
     do {
@@ -45,35 +45,41 @@ int main () {
         puts("|  6 - Comparacao entre Heap, Quick e Selection Sort   |");
         puts("|  0 - Sair                                            |");
         puts("-------------------------------------------------------");
-        printf(" Digite o numero da operacao desejada: ");
+        printf("Digite o numero da operacao desejada: ");
+
         
         scanf("%d", &escolha);
-    
+        printf("\n");
+
         switch (escolha)
         {
             case 1:
                 // Checa se e possivel adicionar mais pacientes
                 if (contaPacientes < MAXPACIENTES)
                 {
+                    int comparacoesTotais = 0;
+                    int trocasTotais = 0;
                     struct paciente novoPaciente = leNovoPaciente();
                     contaPacientes++;
-                    InsereHeap(FilaPacientes, contaPacientes, novoPaciente); 
-                    HeapSort(FilaPacientes, contaPacientes);
+                    InsereHeap(FilaPacientes, contaPacientes, novoPaciente, &comparacoesTotais, &trocasTotais ); 
+                    printf("\nO novo paciente foi adicionado na fila com sucesso!\n\n");
                     break;
                 } 
 				else{
-                    printf("A fila de pacientes está cheia, digite outro comando.\n");
+                    printf("A fila de pacientes está cheia, digite outro comando.\n\n");
                     break;
                 }
             case 2:
                 // Checa se existe paciente para ser removido
                 if (contaPacientes > 0)
                 {
+        
                     RemoveHeap(FilaPacientes, contaPacientes);
                     contaPacientes--;
+                    printf("O proximo paciente foi chamado com sucesso!\n\n");
                 } 
 				else 
-                    printf("Não há pacientes na fila de espera, digite outro comando.\n");
+                    printf("Não há pacientes na fila de espera, digite outro comando.\n\n");
                 break;
             case 3:
                 puts("Lista de Espera:");
@@ -87,12 +93,11 @@ int main () {
                 if(contaPacientes > 0)
                 {
                     int indice_paciente, nova_prioridade;
-                    printf("Digite o íncide do paciente que você deseja alterar a prioridade: ");
+                    printf("Digite o índice do paciente que você deseja alterar a prioridade: ");
                     scanf("%d", &indice_paciente);
                     printf("Digite a nova propriedade que você deseja da-lo: ");
                     scanf("%d", &nova_prioridade);
                     AlteraHeap(FilaPacientes, contaPacientes, indice_paciente, nova_prioridade);
-                    puts("Alteração de prioridade feita!");
                     break;
                 }
                 else
@@ -113,33 +118,52 @@ int main () {
 
 				
 				// Criaçao do vetor orignial com os 1024 elementos
-				for (int i=0; i<TAMANHO_VETOR; i++)
-					vetor_original[i] = rand() % LIMITE_MAXIMO;
+				for (int a=0; a<TAMANHO_VETOR; a++)
+					vetor_original[a] = rand() % (LIMITE_MAXIMO + 1);
 
 				// Copia para os outros vetores do vetor original
-				for (int i = 0; i < TAMANHO_VETOR; i++) 
+				for (int b = 0; b < TAMANHO_VETOR; b++) 
 				{
-        			vetor_quick[i] = vetor_original[i]; 
-        			vetor_selection[i] = vetor_original[i];
-					vetor_heap[i] = vetor_original[i];
+        			vetor_quick[b] = vetor_original[b]; 
+        			vetor_selection[b] = vetor_original[b];
+					vetor_heap[b] = vetor_original[b];
     			}
-				puts("Vetor de 1024 números aleatórios foi criado");
+                puts("Vetor de 1024 números aleatórios:");
+                printf("[");
+                for(int c = 0; c < TAMANHO_VETOR - 1; c++) 
+                    printf("%d, ", vetor_original[c]);
+                printf("%d]\n\n", vetor_original[TAMANHO_VETOR - 1]);
+                
+
 
 				SelectionSort(vetor_selection, TAMANHO_VETOR, &comparacoesSelection, &trocasSelection);
-				quicksort(vetor_quick, 0, TAMANHO_VETOR, &comparacoesQuick, &trocasQuick);
+				quicksort(vetor_quick, 0, TAMANHO_VETOR-1, &comparacoesQuick, &trocasQuick);
 				HeapSortint(vetor_heap, TAMANHO_VETOR, &comparacoesHeap, &trocasHeap);
 
 				puts("Selection Sort");
 				printf("Número de comparacoes: %d\n", comparacoesSelection);
-				printf("Número de trocas: %d\n\n", trocasSelection);
+				printf("Número de trocas: %d\n", trocasSelection);
+                printf("[");
+                for(int d = 0; d < TAMANHO_VETOR - 1; d++)
+                    printf("%d, ", vetor_selection[d]);
+                printf("%d]\n\n", vetor_selection[TAMANHO_VETOR-1]);
 
-				puts("Heap Sort");
+                puts("Heap Sort");
 				printf("Número de comparacoes: %d\n", comparacoesHeap);
-				printf("Número de trocas: %d\n\n", trocasHeap);
+				printf("Número de trocas: %d\n", trocasHeap);
+                printf("[");
+                for(int e = 0; e < TAMANHO_VETOR - 1; e++)
+                    printf("%d, ", vetor_heap[e]);
+                printf("%d]\n\n", vetor_heap[TAMANHO_VETOR-1]);
 
 				puts("Quick Sort");
 				printf("Número de comparacoes: %d\n", comparacoesQuick);
-				printf("Número de trocas: %d\n\n", trocasQuick);
+				printf("Número de trocas: %d\n", trocasQuick);
+                printf("[");
+                for(int f = 0; f < TAMANHO_VETOR - 1; f++)
+                    printf("%d, ", vetor_quick[f]);
+                printf("%d]\n", vetor_quick[TAMANHO_VETOR-1]); 
+
 			}	
                 break;
             case 0:
@@ -151,5 +175,4 @@ int main () {
     } while (escolha != 0);
 
     return 0;
-}                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
-    
+}
