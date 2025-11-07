@@ -6,7 +6,9 @@
 #include <time.h>
 #define MAXPACIENTES 4
 #define TAMANHO_VETOR 1024
-#define LIMITE_MAXIMO 1025
+#define LIMITE_VETOR 1025
+#define TAMANHO_VETOR_MENOR 32
+#define LIMITE_MAXIMO_MENOR 64
 
 struct paciente leNovoPaciente ()
 {
@@ -32,8 +34,8 @@ int main () {
     // Inicializa a fila de pacientes
     InicHeap(FilaPacientes, MAXPACIENTES);
 
+	// Inicializa srand em 0 para padronizaçao dos resultados
     srand(time(NULL)); 	
-	
     // Cria um looping que continua ate o botao de saida ser pressionado
     do {
         puts("--------------------- Menu de opcoes -------------------");
@@ -111,15 +113,21 @@ int main () {
 				int vetor_quick[TAMANHO_VETOR];
 				int vetor_selection[TAMANHO_VETOR];
 				int vetor_heap[TAMANHO_VETOR];
+				int vetor_original_menor[TAMANHO_VETOR_MENOR];
+				int vetor_quick_menor[TAMANHO_VETOR_MENOR];
+				int vetor_selection_menor[TAMANHO_VETOR_MENOR];
+				int vetor_heap_menor[TAMANHO_VETOR_MENOR];
 
 				int comparacoesSelection = 0, trocasSelection = 0;
 				int comparacoesHeap = 0, trocasHeap = 0;
 				int comparacoesQuick = 0, trocasQuick = 0;
-
+				int comparacoesSelectionMenor = 0, trocasSelectionMenor = 0;
+				int comparacoesHeapMenor = 0, trocasHeapMenor = 0;
+				int comparacoesQuickMenor = 0, trocasQuickMenor = 0;
 				
 				// Criaçao do vetor orignial com os 1024 elementos
 				for (int a=0; a<TAMANHO_VETOR; a++)
-					vetor_original[a] = rand() % (LIMITE_MAXIMO + 1);
+					vetor_original[a] = rand() % (LIMITE_VETOR + 1);
 
 				// Copia para os outros vetores do vetor original
 				for (int b = 0; b < TAMANHO_VETOR; b++) 
@@ -127,43 +135,76 @@ int main () {
         			vetor_quick[b] = vetor_original[b]; 
         			vetor_selection[b] = vetor_original[b];
 					vetor_heap[b] = vetor_original[b];
-    			}
-                puts("Vetor de 1024 números aleatórios:");
-                printf("[");
-                for(int c = 0; c < TAMANHO_VETOR - 1; c++) 
-                    printf("%d, ", vetor_original[c]);
-                printf("%d]\n\n", vetor_original[TAMANHO_VETOR - 1]);
-                
+                }              
 
 
 				SelectionSort(vetor_selection, TAMANHO_VETOR, &comparacoesSelection, &trocasSelection);
 				quicksort(vetor_quick, 0, TAMANHO_VETOR-1, &comparacoesQuick, &trocasQuick);
 				HeapSortint(vetor_heap, TAMANHO_VETOR, &comparacoesHeap, &trocasHeap);
 
+                printf("Estatisticas de ordenecao para o vetor de 1024 elementos gerados aleatoriamente:\n\n");
+
 				puts("Selection Sort");
 				printf("Número de comparacoes: %d\n", comparacoesSelection);
-				printf("Número de trocas: %d\n", trocasSelection);
-                printf("[");
-                for(int d = 0; d < TAMANHO_VETOR - 1; d++)
-                    printf("%d, ", vetor_selection[d]);
-                printf("%d]\n\n", vetor_selection[TAMANHO_VETOR-1]);
+				printf("Número de trocas: %d\n\n", trocasSelection);
 
                 puts("Heap Sort");
 				printf("Número de comparacoes: %d\n", comparacoesHeap);
-				printf("Número de trocas: %d\n", trocasHeap);
-                printf("[");
-                for(int e = 0; e < TAMANHO_VETOR - 1; e++)
-                    printf("%d, ", vetor_heap[e]);
-                printf("%d]\n\n", vetor_heap[TAMANHO_VETOR-1]);
+				printf("Número de trocas: %d\n\n", trocasHeap);
 
 				puts("Quick Sort");
 				printf("Número de comparacoes: %d\n", comparacoesQuick);
-				printf("Número de trocas: %d\n", trocasQuick);
-                printf("[");
-                for(int f = 0; f < TAMANHO_VETOR - 1; f++)
-                    printf("%d, ", vetor_quick[f]);
-                printf("%d]\n", vetor_quick[TAMANHO_VETOR-1]); 
+				printf("Número de trocas: %d\n\n\n", trocasQuick);
 
+
+                puts("Agora, escolhendo um vetor menor para melhor visualizacao.\n");
+
+                // Criaçao do vetor orignial com os 32 elementos
+				for (int d=0; d<TAMANHO_VETOR_MENOR; d++)
+					vetor_original_menor[d] = rand() % (LIMITE_MAXIMO_MENOR + 1);
+
+				// Copia para os outros vetores do vetor original
+				for (int e = 0; e < TAMANHO_VETOR_MENOR; e++) 
+				{
+        			vetor_quick_menor[e] = vetor_original_menor[e]; 
+        			vetor_selection_menor[e] = vetor_original_menor[e];
+					vetor_heap_menor[e] = vetor_original_menor[e];
+    			}
+
+                puts("Vetor de 32 números aleatórios:");
+                printf("[");
+                for(int f = 0; f < TAMANHO_VETOR_MENOR - 1; f++) 
+                    printf("%d, ", vetor_original_menor[f]);
+                printf("%d]\n\n", vetor_original_menor[TAMANHO_VETOR_MENOR - 1]);
+
+                
+				SelectionSort(vetor_selection_menor, TAMANHO_VETOR_MENOR, &comparacoesSelectionMenor, &trocasSelectionMenor);
+				quicksort(vetor_quick_menor, 0, TAMANHO_VETOR_MENOR-1, &comparacoesQuickMenor, &trocasQuickMenor);
+				HeapSortint(vetor_heap_menor, TAMANHO_VETOR_MENOR, &comparacoesHeapMenor, &trocasHeapMenor);
+
+                puts("Selection Sort");
+                printf("Número de comparacoes: %d\n", comparacoesSelectionMenor);
+                printf("Número de trocas: %d\n", trocasSelectionMenor);
+                printf("[");
+                for(int d = 0; d < TAMANHO_VETOR_MENOR - 1; d++)
+                    printf("%d, ", vetor_selection_menor[d]);
+                printf("%d]\n\n", vetor_selection_menor[TAMANHO_VETOR_MENOR-1]);
+
+                puts("Heap Sort");
+                printf("Número de comparacoes: %d\n", comparacoesHeapMenor);
+                printf("Número de trocas: %d\n", trocasHeapMenor);
+                printf("[");
+                for(int e = 0; e < TAMANHO_VETOR_MENOR - 1; e++)
+                    printf("%d, ", vetor_heap_menor[e]);
+                printf("%d]\n\n", vetor_heap_menor[TAMANHO_VETOR_MENOR-1]);
+
+                puts("Quick Sort");
+                printf("Número de comparacoes: %d\n", comparacoesQuickMenor);
+                printf("Número de trocas: %d\n", trocasQuickMenor);
+                printf("[");
+                for(int f = 0; f < TAMANHO_VETOR_MENOR - 1; f++)
+                    printf("%d, ", vetor_quick_menor[f]);
+                printf("%d]\n\n", vetor_quick_menor[TAMANHO_VETOR_MENOR-1]);
 			}	
                 break;
             case 0:
